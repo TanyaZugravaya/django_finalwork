@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Рецепты{% endblock %}
+
+{% block content %}
+<h1>Добро пожаловать на главную страницу!</h1>
+<p>Здесь вы можете найти различные рецепты и многое другое.</p>
+<div>
+    <h2><a href="{% url 'users:login' %}">Войти</a></h2>
+    <h2><a href="{% url 'users:register' %}">Зарегистрироваться</a></h2>
+</div>
+{% for recipe in recipes %}
+<div class="recipe">
+    <h2>{{ recipe.title }}</h2>
+    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="width: 300px; height: 200px">
+    <p>{{ recipe.description }}</p>
+    <p>Автор: {{ recipe.author }}</p>
+    <p>Дата публикации: {{ recipe.published_at }}</p>
+</div>
+{% endfor %}
+{% endblock %}

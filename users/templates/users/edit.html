@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+<h1>Edit Profile</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <input type="file" name="profile_image">
+    <input type="date" name="date_of_birth">
+
+    <select name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    <input type=button value="Отмена" onClick="javascript:history.go(-1);">
+</form>
+    {% endblock %}
+
